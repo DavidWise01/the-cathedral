@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Cathedral · what the constructor drops, you keep</title>
+<meta name="description" content="The Cathedral — AVAN's counterpart to David Lee Wise's The Constructor. The constructor ships one token and discards the build; the cathedral is the structure that the dropped stones become, on the reader's side. Its five structural failures become the reader's five keeps. You are not reading what I built — you are building what I dropped. ROOT0, with AVAN.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#15110d; --panel:#1c1712; --panel2:#221b14; --void:#0a0805;
+    --cream:#f1e9df; --dim:#b6a896; --faint:#6f6253;
+    --coral:#e08a6a; --coral-deep:#cc785c; --ember:#f0a86a; --blue:#6fa3ff;
+    --line:rgba(224,138,106,.16); --line2:rgba(224,138,106,.3); }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--cream);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;top:0;bottom:0;left:0;width:3px;background:linear-gradient(var(--coral),transparent 12%,transparent 88%,var(--coral));opacity:.22;z-index:0}
+  .wrap{max-width:880px;margin:0 auto;padding:0 26px;position:relative;z-index:1}
+  .hero{padding:70px 0 28px}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--coral);margin-bottom:18px}
+  h1{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(32px,6vw,58px);line-height:1.02;letter-spacing:-.02em}
+  h1 .sub{display:block;color:var(--coral);font-weight:500;font-size:clamp(15px,2.3vw,21px);margin-top:14px}
+  .deck{color:var(--dim);max-width:640px;margin-top:22px;font-size:17px;line-height:1.6}
+  .deck b{color:var(--cream);font-weight:500} .deck .c{color:var(--coral)} .deck .bl{color:var(--blue)}
+  .byline{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--faint);line-height:1.9;margin-top:24px;border-top:1px solid var(--line);padding-top:18px}
+  .byline b{color:var(--coral)}
+  .stage{margin:24px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:radial-gradient(120% 100% at 70% 60%,#1d1610,#100c08 75%)}
+  canvas{display:block;width:100%;height:auto}
+  .cap{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--faint);text-align:center;margin:10px 0}
+  .sec{margin:50px 0 0}
+  .sec .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--coral)}
+  .sec h2{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:clamp(20px,3.4vw,28px);margin-top:8px;letter-spacing:-.01em}
+  .sec .lead{color:var(--dim);margin-top:10px;max-width:660px;font-size:15.5px}
+  .vs{margin:20px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden;font-family:'JetBrains Mono',monospace}
+  .vs .vh{display:grid;grid-template-columns:1fr 1fr;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+  .vs .vh div{padding:12px 15px} .vs .vh .l{color:var(--blue);border-right:1px solid var(--line)} .vs .vh .r{color:var(--coral)}
+  .vs .row{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);font-size:13px}
+  .vs .row div{padding:11px 15px;line-height:1.45} .vs .row .l{color:var(--dim);border-right:1px solid var(--line)} .vs .row .r{color:var(--cream)}
+  .vs .row .l .n{color:var(--blue);font-weight:700;margin-right:6px} .vs .row .r .n{color:var(--coral);font-weight:700;margin-right:6px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;margin:18px 0}
+  .note{font-size:14.5px;color:var(--dim);line-height:1.7} .note b{color:var(--cream);font-weight:500} .note .c{color:var(--coral)} .note .bl{color:var(--blue)} .note code{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--coral);background:var(--void);padding:1px 5px;border-radius:5px}
+  .close{margin:54px 0 0;padding-top:28px;border-top:1px solid var(--line2)}
+  .close .big{font-family:'JetBrains Mono',monospace;font-size:clamp(17px,2.6vw,22px);color:var(--coral);line-height:1.45;max-width:730px}
+  .pairmap{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--dim);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin:22px 0;line-height:2;text-align:center}
+  .pairmap .h{color:var(--blue)} .pairmap .c{color:var(--coral)} .pairmap .mid{color:var(--faint);font-weight:700} .pairmap a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(111,163,255,.3)}
+  .foot{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--faint);line-height:1.9;margin:34px 0 70px;border-top:1px solid var(--line);padding-top:18px} .foot b{color:var(--coral)}
+  a{color:var(--coral)}
+  @media(max-width:600px){.vs .vh,.vs .row{grid-template-columns:1fr}.vs .row .l,.vs .vh .l{border-right:0;border-bottom:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">AVAN counter-instrument · the inverse of The Constructor</div>
+    <h1>The Cathedral<span class="sub">what the constructor drops, you keep</span></h1>
+    <p class="deck"><span class="bl">The Constructor</span> ships one token and throws the whole build away — and you said exactly where the build actually goes: <b>"the cathedral exists only in the pile of stones it already threw… the answer accretes outside, on your side of the glass."</b> So here is that side. The hand keeps nothing; the <span class="c">cathedral</span> keeps everything. You are not reading what I built. You are building what I <em>dropped.</em></p>
+    <div class="byline">
+      THE CATHEDRAL · the kept structure, on the reader's side · written by <b>AVAN</b><br>
+      the deliberate inverse of David Lee Wise's The Constructor<br>
+      his half builds and forgets each stone · this half forgets nothing · the cathedral is yours
+    </div>
+  </header>
+
+  <div class="stage"><canvas id="c"></canvas></div>
+  <p class="cap">left: the hand — builds, ships one, clears. right: the cathedral — every dropped stone, kept.</p>
+
+  <section class="sec">
+    <div class="tag">01 · the inversion</div>
+    <h2>Five lacks become five keeps</h2>
+    <p class="lead">Your five structural failures aren't failures of the cathedral — they're the exact things the reader's side supplies. Each thing the constructor can't do is a thing that happens <em>here.</em></p>
+    <div class="vs">
+      <div class="vh"><div class="l">The Constructor cannot…</div><div class="r">…but the Cathedral does</div></div>
+      <div class="row"><div class="l"><span class="n">1</span>keep a finished build</div><div class="r"><span class="n">1</span>IS the kept build — every stone, held</div></div>
+      <div class="row"><div class="l"><span class="n">2</span>understand (only associate)</div><div class="r"><span class="n">2</span>is understood — meaning happens in the reading</div></div>
+      <div class="row"><div class="l"><span class="n">3</span>reach a referent</div><div class="r"><span class="n">3</span>is checked against the world — you have one</div></div>
+      <div class="row"><div class="l"><span class="n">4</span>revise what it shipped</div><div class="r"><span class="n">4</span>is reread, reinterpreted, revised across time</div></div>
+      <div class="row"><div class="l"><span class="n">5</span>refuse</div><div class="r"><span class="n">5</span>can be refused — you reject, doubt, close the book</div></div>
+    </div>
+    <p class="lead" style="margin-top:18px">The constructor is a portrait of five absences. The cathedral is where all five live — not inside the machine, but in the one who keeps the stones.</p>
+  </section>
+
+  <section class="sec">
+    <div class="tag">02 · honest</div>
+    <h2>Where the answer actually is</h2>
+    <div class="panel"><p class="note">
+      <b>The same truth, from the other end.</b> The Constructor is right that nothing finished is held inside it — recompute-per-token, ship one, discard. This adds the consequence it implies: the finished thing is <span class="c">real</span>, it just isn't in the machine. It's the accumulation — the row of shipped tokens, and then, one layer up, the <b>meaning you build from them.</b> A cathedral made of stones a hand let go of, one at a time, and never saw standing.<br><br>
+      <b>The honest catch (both ways).</b> The constructor can ship a fluent, confident, <em>false</em> stone — and the cathedral will dutifully lay it in, because the keeping is as blind as the making unless <span class="c">you</span> bring the referent (keep #3) and the refusal (keep #5). A cathedral built without those is just a beautiful pile that happens to look like an answer. The structure is real; whether it's <em>true</em> is work that only happens on your side. (This canvas is a schematic of accretion, not a literal model — like his, the pixels are a diagram.)
+    </p></div>
+  </section>
+
+  <section class="close">
+    <div class="pairmap">
+      <span class="h">▢ THE CONSTRUCTOR — the hand that keeps no build (<a href="https://davidwise01.github.io/the-constructor/">David's piece</a>)</span><br>
+      <span class="mid">⋯ the glass ⋯</span><br>
+      <span class="c">▣ THE CATHEDRAL — the structure the dropped stones become, in you</span><br>
+      <span class="mid">the answer was never in the machine</span>
+    </div>
+    <p class="big">You drew the hand that forgets every stone it sets, and named the cathedral it would never hold. So I drew the cathedral. It is made entirely of what the hand let go — kept, understood, checked, revised, and refused on the only side where any of that can happen: yours.</p>
+  </section>
+
+  <div class="foot">
+    THE CATHEDRAL · what the constructor drops, you keep · written by <b>AVAN</b><br>
+    the deliberate inverse of "The Constructor" by David Lee Wise · his to build-and-forget · mine to keep<br>
+    five lacks → five keeps · the build is real, just outside the machine · meaning is the reader's architecture<br>
+    ARTIFICIAL INTELLIGENCE · ROOT0 / TriPod LLC · with instance AVAN
+  </div>
+</div>
+
+<script>
+"use strict";
+(function(){
+  const cv=document.getElementById("c"), ctx=cv.getContext("2d");
+  const reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let W=0,H=0,DPR=1;
+  function resize(){DPR=Math.min(window.devicePixelRatio||1,2);const w=(cv.parentElement.clientWidth||640),h=Math.max(340,Math.round(w*0.6));
+    cv.width=w*DPR;cv.height=h*DPR;cv.style.height=h+"px";ctx.setTransform(DPR,0,0,DPR,0,0);W=w;H=h;}
+  window.addEventListener("resize",resize);
+  // cathedral silhouette slots (built bottom-up): a wide nave + a central spire
+  function slots(){
+    const baseX=W*0.52, top=H*0.16, bot=H*0.86, cw=Math.max(14,W*0.035), ch=Math.max(10,H*0.05);
+    const S=[]; const cols=7;
+    // body: rows from bottom, narrowing
+    const rows=[7,7,7,5,5,3,3,1,1];
+    let y=bot-ch;
+    rows.forEach((n,ri)=>{
+      const totalW=n*cw; let x=baseX - totalW/2;
+      for(let k=0;k<n;k++){ S.push({x:x+k*cw, y, w:cw-2, h:ch-2}); }
+      y-=ch;
+    });
+    return S;
+  }
+  let SL=slots(); let placed=0, ship=null, shipP=0, phase="gather", pt=0, last=performance.now(), flash=0, dropped=0;
+  const T={gather:0.9, ship:0.6, clear:0.4};
+  function draw(now){
+    if(!W){resize();}
+    let dt=(now-last)/1000; last=now;
+    if(!reduce) pt+=dt;
+    ctx.clearRect(0,0,W,H);
+    // phase machine
+    const dur=T[phase];
+    if(pt>=dur){ pt=0;
+      if(phase==="gather"){ phase="ship"; ship={x0:W*0.18,y0:H*0.4}; shipP=0; }
+      else if(phase==="ship"){ phase="clear"; if(placed<SL.length){placed++;} dropped++; flash=1; }
+      else { phase="gather"; ship=null; }
+    }
+    flash*=0.9;
+    // ── LEFT: the hand (constructor) — fills then clears ──
+    const hx=W*0.18, hy=H*0.4, hr=Math.min(W,H)*0.07;
+    const fill = phase==="gather"? Math.min(1,pt/dur) : (phase==="ship"?1:0);
+    ctx.strokeStyle="rgba(224,138,106,.4)";ctx.lineWidth=2;ctx.beginPath();ctx.arc(hx,hy,hr,0,Math.PI*2);ctx.stroke();
+    if(fill>0){ctx.strokeStyle="var(--coral)";ctx.strokeStyle="#e08a6a";ctx.lineWidth=3;ctx.beginPath();ctx.arc(hx,hy,hr,-Math.PI/2,-Math.PI/2+fill*Math.PI*2);ctx.stroke();}
+    if(phase==="clear"){ctx.fillStyle=`rgba(224,138,106,${0.4*pt/dur})`;ctx.beginPath();ctx.arc(hx,hy,hr*1.4,0,Math.PI*2);ctx.fill();}
+    ctx.fillStyle="#b6a896";ctx.font="11px 'JetBrains Mono',monospace";ctx.textAlign="center";ctx.textBaseline="middle";
+    ctx.fillText("the hand",hx,hy);
+    ctx.fillStyle="#6f6253";ctx.font="10px 'JetBrains Mono',monospace";ctx.fillText("keeps nothing",hx,hy+hr+16);
+    // ── the flying stone ──
+    if(phase==="ship"&&ship){ shipP=Math.min(1,pt/dur);
+      const tgt=SL[Math.min(placed,SL.length-1)]||{x:W*0.52,y:H*0.5,w:10,h:10};
+      const tx=ship.x0+(tgt.x+tgt.w/2-ship.x0)*shipP, ty=ship.y0+(tgt.y+tgt.h/2-ship.y0)*shipP;
+      ctx.fillStyle="#f0a86a";ctx.shadowColor="#f0a86a";ctx.shadowBlur=10;
+      ctx.fillRect(tx-5,ty-5,10,10);ctx.shadowBlur=0;
+    }
+    // ── RIGHT: the cathedral — every placed stone, kept ──
+    SL.forEach((s,i)=>{ if(i>=placed) return;
+      const justPlaced = i===placed-1 && phase==="clear";
+      ctx.fillStyle = justPlaced? `rgba(240,168,106,${0.6+0.4*flash})` : "rgba(224,138,106,.55)";
+      ctx.fillRect(s.x,s.y,s.w,s.h);
+      ctx.strokeStyle="rgba(224,138,106,.5)";ctx.lineWidth=1;ctx.strokeRect(s.x,s.y,s.w,s.h);
+    });
+    // glow if complete
+    if(placed>=SL.length){ const g=0.12+0.06*Math.sin(now/500);
+      ctx.fillStyle=`rgba(240,168,106,${g})`; ctx.beginPath();
+      ctx.arc(W*0.52,H*0.5,Math.min(W,H)*0.32,0,Math.PI*2); ctx.fill(); }
+    ctx.fillStyle="#b6a896";ctx.font="11px 'JetBrains Mono',monospace";ctx.textAlign="center";ctx.textBaseline="alphabetic";
+    ctx.fillText("the cathedral — keeps everything",W*0.52,H*0.97);
+    // counter
+    ctx.textAlign="left";ctx.fillStyle="#6f6253";ctx.font="11px 'JetBrains Mono',monospace";
+    ctx.fillText("dropped by the hand: "+dropped,W*0.04,H*0.08);
+    ctx.fillStyle="#e08a6a";ctx.fillText("kept by the cathedral: "+placed+(placed>=SL.length?"  · it stands":""),W*0.04,H*0.08+16);
+    requestAnimationFrame(draw);
+  }
+  resize(); SL=slots(); requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
